@@ -1,31 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { FaRegMoon, FaRegSun } from "react-icons/fa";
 
-const Nav = () => {
-    const [darkMode, setDarkMode] = useState(() => {
-        return localStorage.getItem('theme') === 'dark';
-    });
-
-    const toggleDarkMode = () => {
-        setDarkMode(prev => {
-            const newMode = !prev;
-            localStorage.setItem('theme', newMode ? 'dark' : 'light');
-            return newMode;
-        });
-    };
-
-    useEffect(() => {
-        document.documentElement.classList.toggle('dark', darkMode);
-    }, [darkMode]);
-
+const Nav = ({ darkMode, toggleDarkMode }) => {
     return (
-        <div className='border py-5 px-10 md:px-20 flex justify-between items-center bg-orange-400 dark:bg-gray-900 dark:text-white w-full'>
-            <div>
-                WS
-            </div>
+        <div className='py-5 px-10 md:px-20 flex justify-between items-center bg-white dark:bg-[#222831] dark:text-[#00FFF5] w-full'>
+            <div>WS</div>
             <div>
                 <button onClick={toggleDarkMode} className="text-xl">
-                    {darkMode ? <FaRegSun /> : <FaRegMoon />}
+                {darkMode ? <FaRegMoon className='text-white'/> : <FaRegSun className='text-yellow-400'/>}
                 </button>
             </div>
         </div>
